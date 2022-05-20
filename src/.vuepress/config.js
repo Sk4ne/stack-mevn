@@ -1,7 +1,7 @@
 module.exports = {
   dest:"docs",
   title: "Notes Git, Css, JavaScript, NodeJS, MongoDB y VueJS",
-  description: "Notas básica sobre css",
+  description: "Guía básica sobre el stack mevn",
   base:"/stack-mevn/",
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
