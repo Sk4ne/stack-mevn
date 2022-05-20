@@ -1,4 +1,4 @@
----
+<!-- ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
 tagline: 
@@ -12,7 +12,7 @@ features:
 - title: Feature 3 Title
   details: Feature 3 Description
 footer: Made by  with ❤️
----   
+---    -->
 
 # Guía básica sobre el `Stack MEVN` 
 
