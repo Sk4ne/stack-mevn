@@ -5,6 +5,11 @@
   de perder información importante.
 ::: 
 
+::: warning
+Gran parte de estas notas las tome de un curso en línea de `Fernando Herrera`
+[Curso de git y github](https://www.udemy.com/course/git-github/)
+:::
+
 ## Instalar Git
 El primer paso para trabajar con Git es instalarlo, esta es su página oficial
 [Git](https://git-scm.com/)
@@ -161,3 +166,313 @@ En ocasiones creamos un commit pero nos equivocamos o escribimos un mensaje poco
 git commit --amend -m "Actualizamos el readme"
 ```
 
+## Revertir los commits
+
+Si queremos revertir los commits usamos 
+```
+git reset -soft HEAD^ 
+```
+
+## Viajes en el tiempo
+
+Para volver a un punto en especifico usamos [VOLVER A REVISAR ESTE COMANDO...]
+
+```js
+// 88421ca es el id o hash del commit
+git reset --soft 88421ca
+```
+## Quedarse en un punto en específico
+Para quedarnos en un punto en especifico y destruir los démas usamos 
+
+```
+git reset --hard 88421ca
+```
+
+## Volver a un punto especifico
+Para regresar a un punto especifico del tiempo usamos el siguiente comando
+```
+git reset --hard 88421ca
+```
+
+## Registro del respositorio
+
+Para ver todo el registro de lo que ha sucedido en el repositorio usamos
+```
+git reflog
+```
+
+## Renombrar archivos en git
+
+```
+git mv login.vue loginUser.vue
+```
+::: tip Nota
+`login.vue` es el nombre original y `loginUser.vue` es el nuevo nombre 
+:::
+
+## Eliminar archivo en git
+
+```
+git rm README.md 
+```
+
+## Ignorando archivos
+
+::: tip Nota
+Para ignorar archivo lo primero que debemos hacer es crear un archivo llamando `.gitignore` en la raiz del proyecto, en este archivo especificamos los archivos a ignorar.
+:::
+
+``` js
+// .gitignore
+node_modules/
+data.log
+*.log
+```
+
+## Ramas en git
+
+Una rama es git es una línea de tiempo de commits. 
+
+## Crear un rama
+::: tip Nota
+`test` es el nombre de la rama
+:::
+
+```
+git branch test
+```
+## Ver todas las ramas
+```
+git branch 
+```
+## Movernos a una rama
+
+```
+git checkout nameBranch
+```
+
+## Diferencia entre ramas
+
+Para conocer la diferencia entre dos ramas usamos el siguiente comando.
+
+``` 
+git diff test master
+
+```
+::: tip Nota 
+`test` y `master` son el nombre de las ramas que estamos comparando 
+::: 
+
+## Unir ramas `merge`
+
+Para unir dos ramas lo primero que debemos hacer es movernos a la rama principal, la cual queremos fusionar con otra. Luego hacemos la unión.
+
+```
+git branch master
+git merge test
+```
+::: tip Nota 
+Despues de hacer un merge es buena practica eliminar la rama que unimos a otra, siguiendo el ejemplo anterior, eliminariamos la `rama test` porque ya la unimos a la `rama master`  
+::: 
+
+```
+git branch -d test
+```
+
+## Crear una rama y movernos automaticamente a ella
+
+```
+git branch -b nameBranch 
+``` 
+
+## Tag o etiquetas
+
+Cuando llevamos cierto tiempo trabajando en un proyecto y tenemos el primer prototipo listo para producción. Es aquí donde entra en juego los `tags`
+
+:::tip Nota 
+Los `tags` son una referencia a un commit específico
+:::
+
+## Crear un tag
+
+```
+Git tag name-tag
+```
+
+## Ver todos los tags
+
+```
+git tag 
+```
+
+## Otra forma de crear tags
+Esta forma es mucho más descriptiva que la anterior, es la que más me gusta. 
+
+```
+git tag -a v1.0 -m "Version alpha" 
+```
+
+## Eliminar un tag
+
+```
+git tag -d name-tag
+```
+## Subir tag a un repositorio remoto
+
+Si tenemos nuestro repositorio local almacenado en sitios como GitLab o GitHub, el comando para subir nuestros tag a la nube es el siguiente
+
+```js
+git pus --tags 
+// ó
+git push origin --tags 
+```
+
+## Tag a un commit en especifico
+
+```
+git tag -a v1.0 28b2030 -m "Version alpha"
+``` 
+::: tip 
+Si queremos ver el mensaje del tag, usamos `git show v1.0` donde v1.0 es la anotación que le dimos al tag
+:::
+
+## Git stash y rebase
+
+Un `stash` es un contenedor en el cual podemos poner los cambios temporales para dejarlos como estaban en el último commit
+
+## Trabajos que hay en progreso `WIP`
+
+```
+git stash list
+```
+
+## Recuperar los cambios del stash
+
+```
+git stash pop
+```
+
+## Eliminar un stash 
+
+```
+git stash drop
+```
+
+:::tip Nota
+`git stash` toma algunos archivos y los coloca en un área temporal
+:::
+
+## Comando más importantes del stash
+
+:::tip Nota
+`git stash / git stash save`: Salva y restaura el último commit<br>
+`git stash apply`: Restaura el último registro en el stash <br>
+`git stash list`: Nos permite ver las múltiples entradas en el stash
+:::
+
+## Restaurar una entrada del stash
+
+```
+git stash apply stash{1}
+```
+
+## Borrar la primera entrada del stash
+
+```
+git stash drop
+```
+Para ver en detalle que hicimos en cada una de las entradas del stash usamos
+
+```
+git stash list --stash
+``` 
+
+## Mensajes en el stash
+
+```
+git stash save "message"
+```
+
+## Borrar las entradas del stash
+
+```
+git stash clear
+```
+::: warning 
+Tengo que volver a estudiar este tema en detalle :books:
+::: 
+
+## Git rebase
+
+El rebase nos sirve para actualizar el punto donde creamos la rama
+
+### Usos del rebase interactivo
+* Ordenar commits
+* Corregir mensajes de los commits
+* Unir commits
+* Separar commits 
+
+## Cambiar mensaje del commit usando rebase
+
+```
+git rebase -i HEAD~1
+```
+::: tip Nota
+El comando anterior abre el editor de vim donde podemos editar el mensaje del commit 
+::: 
+
+## Revertir los cambios del último commit
+
+Para revertir los cambios del último commit sin destruirlos usamos
+
+```
+git reset HEAD^ 
+```
+# GitHub
+
+## Fuentes remotas
+Para ver las fuentes remostas que tenemos agregadas en nuestro repositorio usamos
+
+```
+git remote -v 
+```
+
+## Repositorio remoto
+
+Para descargar los cambios de un repositorio remoto y e intentar hacer un merge en nuestro repositorio local usamos 
+
+```
+git pull
+```
+
+## Clonar un repositorio remoto
+
+```js
+git clone url-repository nombre-personalizado
+// Ejemplo
+git clone https://github.com/Sk4ne/test-code.git codigo-prueba
+```
+:::tip Nota
+En ocasiones tenemos problemas para subir los cambios locales a un repositorio remoto esto puede ocurrir porque el repositorio remoto contiene cambios o modificaciones que no tiene nuestro repositorio local.
+:::
+
+## git pull vs git fetch
+**git pull**: descarga los cambios y automaticamente intenta hacer un merge
+
+**git fetch**: actualiza el repositorio local con los cambios que se hayan realizado en el repositorio remoto.
+
+## Sincronizar repositorio local
+
+Para sincronizar un repositorio local con uno remoto hacemos lo siguiente
+
+```
+git fetch
+git status
+git pull 
+```
+
+::: tip Nota
+Si tengo errores en estas notas por favor hágamelo saber. :+1:
+
+[LinkedIn](https://linkedin.com/in/neider-lópez-12440a227)
+::: 
