@@ -307,7 +307,7 @@ Estilos en línea `1000` <br>
 La `Cascada` dice que todos los estilos que vienen despúes sobrescriben a los que estan antes. La `Especificidad` rompe la cascada.
 ::: 
 
-# Herencia en CSS
+## Herencia en CSS
 La herencia es la capacidad que tienen algunos elementos de heredar algunas propiedades de sus elementos contenedores (Padres, abuelos, etc)
 
 ::: tip Nota:
@@ -324,7 +324,7 @@ Por ejemplo: Si tenemos un link dentro un párrafo y queremos que herede el colo
 
 Para evitar que un elemento herede propiedades, añadimos el valor initial a una propiedad ejemplo `color:initial`  
 
-# Box Model
+## Box Model
 ::: tip Propiedades del box model 
 `Contenido` <br>
 `Borde` <br>
@@ -340,7 +340,7 @@ fuente: `w3school`
 Los `elementos en linea` no tienen medida. El tamaño lo determina su contenido.
 
 
-# Margin
+## Margin
 Es la propiedad que nos permite generar espacio entre elementos. Es un `shorthand` que controla los 4 lados posibles a los que dar márgenes
 
 ::: tip Margin
@@ -400,7 +400,7 @@ Usando Margenes atomáticos podemos centrar elementos.
 }
 ```
 
-# Padding
+## Padding
 La propiedad padding nos permite generar espacio entre el borde interno y la caja.
 
 Es un shorthand que controla los 4 lados posibles a los que dar padding.
@@ -441,7 +441,7 @@ Si nuestro objetivo es separar la caja de los elementos que la rodean debemos us
 Si queremos aumentar el tamaño de la caja y separar los bordes del contenido debemos usar `padding`
 ::: 
 
-# Border
+## Border
 Es la propiedad que nos permite modificar el borde de la caja. Es un shorthand que agrupa 3 propiedades 
 
 :::tip  
