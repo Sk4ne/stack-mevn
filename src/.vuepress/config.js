@@ -13,18 +13,34 @@ module.exports = {
     editLinks: false,
     // docsDir: '',
     editLinkText: '',
-    lastUpdated: true,
+    // lastUpdated: true,
+    lastUpdated: true, 
     nav: [
       {
         text: 'Guía',
         link: '/',
       },
     ],
-    sidebar:[/* "/", */"/01-git/",'/02-css/','/03-typescript/']
+    sidebar:[/* "/", */"/01-git/",'/02-css/','/03-typescript/','/04-vanillajs/']
   },
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    '@vuepress/last-updated'
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // Don't forget to install moment yourself
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).fromNow()
+      }
+    }
+    ]
   ]
+  // plugins: [
+  //   '@vuepress/plugin-back-to-top',
+  //   '@vuepress/plugin-medium-zoom',
+  //   '@vuepress/last-updated'
+  // ]
 }

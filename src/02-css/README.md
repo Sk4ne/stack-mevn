@@ -291,7 +291,7 @@ Si tenemos un elemento con la clase `.text-2` y queremos aplicarle un estilo a t
 
 # Como funciona CSS?
 
-## Especificidad: 
+## Especificidad
 
 La `Especificidad` establece cómo de especifico es un selector para saber qué estilo aplicar. El cálculo se realiza con la siguiente `fórmula:` 
 
@@ -334,4 +334,151 @@ Para evitar que un elemento herede propiedades, añadimos el valor initial a una
 `Height`: Alto <br>
 ::: 
 
-`Los elementos en linea no tienen medida. El tamaño lo determina su contenido.`
+![Box model](https://res.cloudinary.com/dqhme1rod/image/upload/v1653326979/myimages/ktfbfs2isdazqpoyviin.png)
+fuente: `w3school`
+
+Los `elementos en linea` no tienen medida. El tamaño lo determina su contenido.
+
+
+# Margin
+Es la propiedad que nos permite generar espacio entre elementos. Es un `shorthand` que controla los 4 lados posibles a los que dar márgenes
+
+::: tip Margin
+`margin-top`: Margen superior <br>
+`margin-right`: Margen derecho <br>
+`margin-bottom`: Margin inferior <br>
+`margin-left`: Margen izquierdo
+::: 
+
+Admite hasta 4 valores que van el orden de las agujas del reloj
+
+::: tip 
+`4 valores`  margin:top right bottom left; <br>
+`3 valores`  margin: top left/right bottom; <br>
+`2 valores`  margin: top/bottom left/right <br>
+`1 valor`  margin:top/right/bottom/left
+::: 
+
+**Ejemplo** 
+
+```css
+/* Valores separados */
+.container-2{
+ margin-top: 50px;
+ margin-left:24px;
+ margin-bottom:14px; 
+ margin-left: 40px; 
+}
+```
+```css
+  /* shorthand */
+.container{
+ /* Asigna un valor independiente a cada lado: top,right,bottom y left */
+ margin: 5px 14px 30px 4px;
+ /* Aplica 4px de margin-top, 3px a la derecha e izquierda y 90px abajo  */
+ margin: 4px 3px 90px;
+ /* Aplica 53px de margin arriba y abajo y 34 a la derecha e izquierda */
+ margin: 53px 34px; 
+ /* Aplica 40px de margin: top,left,bottom,right */
+ margin: 40px; 
+}
+```
+::: tip Nota
+Los elementos de línea solo tienen margenes horizontales <br>
+Los elementos de bloque tienen disponibles los 4 margenes <br>
+Usando Margenes atomáticos podemos centrar elementos.
+::: 
+
+```css
+.container{
+  width: 200px;
+  height:200px;
+  background-color: darkgreen;
+  /* centrar */
+  margin-left:auto;
+  margin-right:auto;
+}
+```
+
+# Padding
+La propiedad padding nos permite generar espacio entre el borde interno y la caja.
+
+Es un shorthand que controla los 4 lados posibles a los que dar padding.
+
+:::tip padding 
+`padding-top`: padding superior <br>
+`padding-right`: padding derecho <br>
+`padding-bottom`: padding inferior <br>
+`padding-left`: padding izquierdo 
+::: 
+
+Admite hasta 4 valores que van en el orden de las agujas del reloj
+
+:::tip  
+`4 valores`  padding: top right bottom left; <br>
+`3 valores`  padding: top right/left bottom; <br>
+`2 valores`  padding: top/bottom right/left; <br>
+`1 valor`  padding:top/right/bottom/left
+::: 
+
+ejemplo
+
+```css
+.container { 
+  /* top, right,bottom,left */
+  padding: 45px 24px 13px 56px;
+  /* top,right/left, bottom */
+  padding: 90px 12px 45px;
+  /* top/bottom, right/left */
+  padding: 24px 45px;
+  /* top/right/bottom/left */
+  padding: 20px;
+}
+```
+
+:::tip  Nota
+Si nuestro objetivo es separar la caja de los elementos que la rodean debemos usar `margin`. <br>
+Si queremos aumentar el tamaño de la caja y separar los bordes del contenido debemos usar `padding`
+::: 
+
+# Border
+Es la propiedad que nos permite modificar el borde de la caja. Es un shorthand que agrupa 3 propiedades 
+
+:::tip  
+* `border-width`: Ancho del borde <br>
+  * border-top-width
+  * border-right-width
+  * border-bottom-width
+  * border-left-width <br>
+* `border-style`: Estilo del borde <br>
+  * border-top-style
+  * border-right-style
+  * border-bottom-style
+  * border-left-style <br>
+Valores para `border-style`
+    * dotted
+    * dashed
+    * solid
+    * double
+    * groove
+    * ridge
+    * inset
+    * outset
+    * none
+    * hidden <br>
+* `border-color`: color del borde <br> 
+:::
+
+Ejemplo
+
+```css
+.container{
+  /* Todas sus propiedades */
+  border-width: 5px;
+  border-style: solid;
+  border-color:red;
+
+  /* shorthand */
+  border: 4px solid red;
+}
+```
