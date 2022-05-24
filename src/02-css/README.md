@@ -77,13 +77,10 @@ Dentro del archivo `.html` creamos un sección con la etiqueta `<style></style>`
  </html>
  ```
  # Sintaxis de css
- ::: tip Sintaxis
- Selector<br>
- Propiedad <br>
- Valor<br>
- `Revisar esta parte` <br>
- Al conjunto de selector(declaraciones se les denomina regla)
- ::: 
+ 
+ ![Sintax css](https://res.cloudinary.com/dqhme1rod/image/upload/v1653414229/myimages/pja4o0rzu9ryxk9vimzz.png)
+
+ `Fuente: https://ed.team/`
 
  ```css
   body{
@@ -482,3 +479,152 @@ Ejemplo
   border: 4px solid red;
 }
 ```
+
+## box-sizing
+Es la propiedad que nos permite controlar el cálculo que hace el navegador a la hora de modificar las propiedades content, padding y border
+
+Los dos valores que le podemos dar son: 
+:::tip 
+`context-box` Valor por defecto  <br>
+`border-box` Cálculo de tamaño del elemento incluyendo el padding y el border  <br>
+:::
+
+`Nota: ` Es buena práctica agregar 
+```css
+*{
+  border-sizing:border-box;
+}
+```
+Para que respete las medidas que le damos a las cajas
+
+## border-radius
+Es la propiedad que nos permite redondear vertices de forma independiente. Es un shorthand que engloba 4 propiedades <br>
+:::tip border-radius
+* `border-top-left-radius` Radio del borde superior izquierdo
+*  `border-top-right-radius` Radio del borde superior derecho
+* `border-bottom-right-radius` Radio del borde inferior derecho
+* `border-bottom-left-radius` Radio del borde inferior izquierdo
+:::
+
+Si sólo recibe un valor dibujará un circulo en cada vértice del radio que especifiquemos
+
+```css
+  .container {
+    width: 300px;
+    height: 300px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 150px;
+    border-bottom-left-radius: 200px;
+    /* shorthand */
+    /* Los estilos se empiezan a aplicar desde border-top-left-radiuos */
+    border-radius: 50px 100px 150px 200px;
+ } 
+```
+
+## overflow
+
+Decimos que un contenido se desborda cuando la caja es más pequeña que el contenedor. `overflow` es la propiedad que controla qué debe hacer la caja cuando su contenido se desborda del contenedor.
+
+Tiene cuatro posibles valores:
+:::tip 
+`visible` Es el valor por defecto <br>
+`hidden` El contenido que se desborde no se verá. Si aplícamos esta propiedad en un solo eje, el otro se pondrá automaticamente en el valor scroll<br>
+`scroll` Aparecerán barras de scroll en el eje asignado (x, y o ambos)<br>
+`auto` Aparecerán barras de scroll en el caso de que hicieran falta
+::: 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<div class="container">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis voluptates quam temporibus amet voluptatem velit soluta reprehenderit, nisi ad. Harum nesciunt, consectetur ullam laborum incidunt blanditiis expedita autem repellat excepturi.
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolor, ab ad dolorum  ut voluptatum dicta commodi accusantium.
+  </div>
+</body>
+</html>
+```
+```css
+/*Al asignarle a overflow el valor hidden, el contenido que se deborda se ocultara*/
+.container{
+  width: 300px;
+  height:300px;
+  background-color:yellow; 
+  overflow: hidden;
+}
+```
+
+## colapsado de márgenes
+Para solucionar el colapsado de margenes entre padres a hijos podemos usar algunas de estas tres propiedades dentro del padre.
+
+```html
+<header class='header'>
+  <h1 class='text'>Soy un h1</h1>
+</header>
+```
+```css
+.header{
+  overflow: hidden;
+  /* padding-top:0.1px; */
+  /* border-top:0.1px solid lightcoral; */
+}
+```
+
+## display
+
+La propiedad display nos sirve para cambiar el contexto de los elementos dentro del navegador. Admite varios valores <br>
+
+:::tip  
+* `none`  Hace que el elemento no se muestre, pero sigue cargandose
+* `block`  Hace que el elemento sea de bloque
+* `inline`  Hace que el elemento sea de línea
+* `inline-block`  Hace que el elemento sea de linea pero admite medidas y margenes verticales
+:::
+
+## outline
+
+Outline es la propiedad que nos permite dibujar un borde por fuera del modelo de caja.
+Es un shorthand que engloba:
+::: tip 
+`outline-width`: Controla el ancho del outline <br>
+`outline-style`: Controla el estilo del outline <br>
+`outline-color`: Controla el color del outline
+::: 
+
+Tiene las mismas propiedades y sintaxis que border, pero con algunas diferencias
+* No ocupa sitio, ya que no forma parte del box-model
+* No se puede redondear
+* No se pueden controlar los lados de forma independiente
+
+También cuenta con la propiedad `outline-offset`, que nos permite aumentar o disminuir la distancia del outline respecto a la caja a la que pertence
+
+:::warning Nota 
+El outline siempre se dibuja por fuera de la caja.
+::: 
+```html
+ <div class='container'></div>
+```
+```css
+.container{
+  height:200px;
+  width: 200px;
+  background-color: lightgray;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 42px;
+  /* shorthand */
+  outline: 12px solid red;
+  outline-offset: 12px;
+  /* Definición de cada una de las declaraciones por separado */
+  outline-width: 4px;
+  outline-style: solid;
+  outline-color: darkgreen;
+}
+```
+EN DESARROLLO... 

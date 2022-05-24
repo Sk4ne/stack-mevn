@@ -26,17 +26,18 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    [
-      '@vuepress/last-updated',
-      {
-        transformer: (timestamp, lang) => {
-          // Don't forget to install moment yourself
-          const moment = require('moment')
-          moment.locale(lang)
-          return moment(timestamp).fromNow()
-      }
-    }
-    ]
+    '@vuepress/last-updated'
+    // [
+    //   '@vuepress/last-updated',
+    //   {
+    //     transformer: (timestamp, lang) => {
+    //       // Don't forget to install moment yourself
+    //       const moment = require('moment')
+    //       moment.locale(lang)
+    //       return moment(timestamp).fromNow()
+    //   }
+    // }
+    // ]
   ]
   // plugins: [
   //   '@vuepress/plugin-back-to-top',
