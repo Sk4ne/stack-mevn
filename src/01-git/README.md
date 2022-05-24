@@ -470,9 +470,3 @@ git fetch
 git status
 git pull 
 ```
-
-::: tip Nota
-Si tengo errores en estas notas por favor hágamelo saber. :+1:
-
-[LinkedIn](https://linkedin.com/in/neider-lópez-12440a227)
-::: 

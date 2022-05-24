@@ -96,6 +96,7 @@ message = 'Soy un string';
 ::: 
 
 ## Tipos Básicos
+<!-- Crear un subcarpetas con los tipos de datos -->
 
 ::: tip Tipos Primitivos 
 ```ts
@@ -104,3 +105,155 @@ Void   | Null | Undefined |  Never  | Object
 ```
 :::
 
+## Type number
+
+```ts
+// Explicito
+let phone:number;
+phone = 1;
+phone = 3124567892;
+// phone = 'typescript'; // Error
+```
+```ts
+// Inferido
+let phoneNumber = 3145678912;
+// phoneNumber = true; // Error tipo de dato
+```
+:::tip hexadecimal, binary,octal
+
+:::
+
+
+```ts
+let hex: number = 0xf00d; 
+let binary : number = 0b100;
+let octal : number = 0o744;
+```
+
+## Type: Boolean
+:::tip Boolean
+* Es el tipo de dato más simple en TypeScript
+* Dos únicos valores: `true` y `false`
+::: 
+
+
+## Type: String
+
+:::tip string
+* El tipo de dato para trabajar con datos textuales o cadenas
+* Así como en JavaScript, se pueden usar comillas dobles `("")` y simples `('')`
+::: 
+
+```ts
+let message: string = 'Soy un string';
+let message2: string;
+message2 = "Tambien soy un string";
+```
+
+:::tip Template Strings
+* Permiten definir múltiples líneas de texto
+* Pueden contener expresiones o variables embebidas
+* Se debe usar el caracter backtick/backquote(`) y para expresiones ${expr}
+::: 
+
+```ts
+let username: string = 'Yamachita';
+let phone : number = 124566;
+let isPro: boolean = true;
+let userInfo : string;
+userInfo = `
+    User Info:
+    username: ${username}
+    firstName: ${username + ' Lopez'}
+    phone: ${phone}
+    isPro: ${isPro}
+`;
+
+console.log('userInfo', userInfo);
+
+```
+
+## Type any
+
+:::tip any
+* Usado para capturar valores dinámicos
+* Los valores pueden cambiar de tipo en el tiempo:
+    * APIs externas
+    * Librerías de terceros 
+::: 
+
+:::warning 
+En la prática el tipo any debería usarse como último recurso...
+:::
+
+```ts
+// Type any
+let idUser : any;
+idUser = 1;
+idUser = '1';
+```
+
+## Type void
+
+:::tip Type void
+* `void` es lo opuesto de `any` representa la ausencia de tipo
+* Comúnmente se usa como tipo de retorno en funciones. 
+::: 
+
+
+```ts
+// Tipo explcito
+function showInfo(user: any): any {
+  console.log('User info', user.id, user.username, user.firstName);
+//   return 'hola';  
+}
+showInfo({
+  id:1, username: 'dan492',firstName: 'Dan'  
+});
+
+// Tipo Inferido
+function showFormattedInfo(user:any){
+  console.log('User Info', ` 
+    id: ${user.id}
+    username: ${user.username}
+    firstName: ${user.firstName}
+  `)  
+}
+showFormattedInfo({ id:1, username: 'dan492',firstName: 'Dan'});
+
+```
+## Type never
+
+:::tip Type never
+* Representa el tipo de valor que nunca ocurre
+    * Funciones que lanzan excepciones
+    * Funciones que nunca retornan un valor
+::: 
+
+```ts
+function handleError(code: number, message: string): never {
+    // Process your code here
+    // Generate a message
+    throw new Error(`${message}. Code: ${code} `);
+}
+// Ejecutamos la función
+try {
+  handleError(404,'Not Found');
+} catch (error) {
+}
+```
+
+## Type null y undefined
+
+:::tip Type null y undefined
+* En TypeScript, ambos "valores" tienen sus respectivos tipos:
+    * null
+    * undefined
+::: 
+
+## Type null y undefined como subtipos
+
+:::tip Type null y undefined Como subtipos
+* Null y Undefined se pueden asumir como subtipos de los otros tipos de datos
+* Significa que se puede asignar `null` y `undefined` a una variable de tipo `string` por ejemplo  
+::: 
