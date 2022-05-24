@@ -13,8 +13,8 @@ module.exports = {
     editLinks: false,
     // docsDir: '',
     editLinkText: '',
-    // lastUpdated: true,
-    lastUpdated: true, 
+    // lastUpdated: true, string | boolean
+    lastUpdated: '24/05/2022, 2:40 PM', 
     nav: [
       {
         text: 'Guía',
