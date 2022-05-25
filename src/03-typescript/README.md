@@ -257,3 +257,241 @@ try {
 * Null y Undefined se pueden asumir como subtipos de los otros tipos de datos
 * Significa que se puede asignar `null` y `undefined` a una variable de tipo `string` por ejemplo  
 ::: 
+
+## Type: Null y Undefined. La Opción --strictNullChecks
+
+:::tip Type null y undefined Como subtipos
+* Solo permite asignar `null` y `undefined` a una variable de tipo `any` o sus tipos respectivos
+* Ayuda a evitar errores comunes en programación de apps en el ámbito de JavaScript
+::: 
+
+## Type: object
+
+:::tip Type object
+
+* `object` es el tipo de dato que representa un valor no primitivo
+* Es el tipo para variable que no sea `number`,`string`,`boolean`,`null`,`undefined`,etc
+::: 
+
+
+## Object vs object
+
+:::tip 
+
+* `Object`: instancia de la clase Object de JavaScript
+* `object`: tipo para valores no primitivos. Con este tipo no se acceder a las propiedades del objecto.
+::: 
+
+**Nota**: Usando el tipo `object` de TypeScript no podemos usar la notación de puntos.
+
+## Array
+
+:::tip array 
+* Al igual que JavaScript, TypeScript permite definir un arreglo para contener un conjunto de valores
+* Usa dos notaciones: `tipo[]` y `Array<tipo>`
+::: 
+
+```ts
+// Corchetes []
+// Tipo Explicito
+let users: string[];
+users = ['Dan890','paparazzi','lensqueen'];
+// users = [1,true,'test']; // Error 
+
+// Tipo Inferido
+let otherUsers = ['Dan890','paparazzi','lensqueen'];
+// users = [1,true,'test']; // Error 
+
+// Array<TIPO>
+let pictureTitles: Array<string>;
+pictureTitles = ['Favorite Sunset','Vacation Time', 'Landscape'];
+
+// Accediendo a los valores en un Array
+console.log('first user', users[0]);
+console.log('first title', pictureTitles[0]);
+
+// Propiedades en Array
+console.log('users.length',users.length);
+
+// Uso de funciones en Arrays
+users.push('NuevoUser');
+users.sort();
+console.log('users',users);
+```
+
+## Tuple
+:::tip Tuple
+* Una tupla en TypeScript es un `array de elementos que están tipados.` De esta manera cada vez que haya que insertar un elemento se validará que dicho elemento coincida con el tipo de dato establecido en la tupla.
+* Las tuplas permiten expresar un arreglo con un número fijo de elementos
+* Los tipos de datos son conocidos
+::: 
+
+:::warning 
+Los tipos deben ser diferentes para cada una de las posiciones
+:::
+
+```ts
+export {};
+
+// [1,'user];
+let user : [number,string];
+user = [1,'luisxaviles'];
+
+console.log('user',user);
+console.log('username', user[1]);
+console.log('username.length', user[1].length);
+console.log('username', user[0]);
+
+// Tuplas con varios valores
+// id, username, isPro
+
+let userInfo: [number, string, boolean];
+userInfo = [2,'paparazzi',true];
+console.log('userinfo', userInfo);
+
+// Arreglo de Tuplas
+let array: [number, string][] = [];
+array.push([1,'luisxaviles']); //0
+array.push([2,'paparazzi']); //1
+array.push([3,'lensQueen']); //2
+console.log('array', array);
+
+// Uso de funciones Array
+// lensQueen -> lensQeeen001
+
+array[2][1] =  array[2][1].concat('001'); // lensQueen001
+console.log('array',array);
+```
+
+## Enum
+
+:::tip Enum
+* Los enumerados permiten definir un conjunto de constantes con nombre, es decir, una colección de valores relacionados que pueden ser valores numéricos o de cadena.
+* Tienen la ventaja de adaptarse al contexto de la aplicación.
+:::
+
+```ts
+enum PhotoOrientation {
+    Landscape, //0
+    Portrait, //1 
+    Square,  //2
+    Panorama //3
+}
+
+const landscape : PhotoOrientation = PhotoOrientation.Landscape;
+console.log('landscape', landscape);
+console.log('landscape', PhotoOrientation[landscape]);
+
+enum PictureOrientation {
+  Landscape = 10, //0
+  Portrait,  
+  Square,  
+  Panorama   
+}
+console.log('portrait',PictureOrientation.Portrait);
+
+enum Country {
+    Bolivia = 'bol',
+    Colombia = 'col',
+    Mexico = 'mex',
+    EEUU = 'usa',
+    Espana = 'esp'
+}
+
+const country : Country = Country.Colombia;
+console.log('country', country); 
+``` 
+<!-- End tipos básicos -->
+
+## Unión de Tipos
+
+:::tip
+* En TypeScript se puede definir una variable con múltiples tipos de datos: Union Type
+* Se usa el símbolo de pipe `('|')` entre los tipos
+::: 
+
+```ts
+// La variable idUser puede almacenar un número o un string
+let idUser : number | string;
+idUser = 10;
+idUser = '10';
+
+// Buscar username dado un ID
+function getUsernameById(id:number | string){
+   // Logica de negocio, find the user
+   return 'luixaviles'; 
+}
+
+getUsernameById(20);
+getUsernameById('20');
+``` 
+
+:::tip Alias de tipos
+* TypeScript permite crear un alias como nuevo nombre para un tipo
+* El alias se puede aplicar también a un conjunto o combinación de tipos
+* Se usa la palabra reservada `type`
+::: 
+
+```ts
+// Alias de Tipos: TS
+type IdUser = number | string;
+type Username = string;
+let idUser : IdUser;
+idUser = 10;
+idUser = '10';
+
+function getUsernameById(id:IdUser): Username {
+   return 'luixaviles'; 
+}
+
+getUsernameById(20);
+getUsernameById('20');
+```
+
+:::tip Tipos Literales
+* Una variable con un tipo literal puede contener únicamente una cadena del conjunto
+* Se usan cadenas como "tipos", combinados con el símbolo de pipe (`'|'`) entre ellos.
+:::
+
+```ts
+// 100x100, 500x500, 1000x1000 
+type SquareSize = '100x100' | '500x500' | '1000x1000';
+// let smallPicture: SquareSize = '2000x2000'; // Error 
+let smallPicture: SquareSize = '100x100';
+let mediumPicture : SquareSize = '500x500' 
+```
+
+## Aserciones de Tipo
+
+:::tip Aserciones de Tipo
+* Cuando el programador puede concer más que TypeScript sobre el valor de una variable 
+* Es un mensaje al compilador: "Confía en mí, sé lo que hago" 
+* Usa dos sintaxis: `<Angle Bracket>` y `Variable as tipo`
+::: 
+
+```ts
+// <tipo> // Angle Bracket syntax
+let username : any;
+username = 'luis';
+
+// Tenemos un cadena, TS confia en mi!
+let message: string = (<string>username).length > 5 ? 
+                      `Welcome ${username}` : 
+                      'Username is too short';
+console.log('message', message);  
+
+let usernameWidthId : any = 'luisxaviles 1';
+// Como obtener el username?
+username = (<string>usernameWidthId).substring(0,10);
+console.log('Username only', username);
+
+// Sintaxis "as"
+message = (username as string).length > 5 ? 
+                      `Welcome ${username}` : 
+                      'Username is too short';
+
+let helloUser: any;
+helloUser = 'hello paparazzi';
+username = (helloUser as string).substring(6);
+console.log('username',username);  
+``` 
