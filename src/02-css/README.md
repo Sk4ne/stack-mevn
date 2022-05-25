@@ -627,4 +627,91 @@ El outline siempre se dibuja por fuera de la caja.
   outline-color: darkgreen;
 }
 ```
-EN DESARROLLO... 
+
+## text-align
+
+text-align es la propiedad que nos permite alinear horizontalmente el contenido de un elemento del bloque simpre que el contenido `no tenga ancho declarado`
+
+Acepta 4 posibles valores
+
+:::tip 
+* `text-align: left ` Alínea el contenido a la izquierda
+* `text-align: right` Alínea el contenido a la derecha
+* `text-align: center` Alínea el contenido al centro
+* `text-align: justify` Alínea el contenido de forma justificada. No es recomendable usarlo
+::: 
+
+:::warning
+* text-align centra el contenido de los elementos de bloque. Para centrar un elemento de línea como un en `a` tenemos que usar la propiedad `display:block`
+* Las imagenes por defecto son `display:inline-block`
+:::
+
+Ejemplo
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Text Align</title>
+</head>
+<body>
+<a href="#" class='enlace'>Soy un enlace</a>
+</body>
+</html>
+```
+
+```css
+.enlace {
+  display:block;
+  text-align:center;
+}
+```
+:::tip Centrar un imágen
+
+Para centrar un imágen debemos definirle las siguientes propiedades 
+:::
+
+```css
+.image{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+```
+
+## box-shadow
+
+La propiedad box-shadow se creó para añadir efectos de sombra a nuestra caja. En esencia lo que hace es crear un clon de la caja respetando la forma de su box-model (ancho, alto,redondez)
+
+La sintaxis de box-shadow se puede escribir de distintas formas según lo que queremos conseguir.
+Los valores que le podemos poner son:
+
+:::tip box-shadow
+* `offset-x` Desplazamiento en x (obligatorio)
+* `offset-y` Desplazamiento en y (obligatorio)
+* `blur-radious` Desenfoque de la sombra
+* `spread-radius` Expansión de la sombra
+* `color` El color de la sombra, si no le especificamos lo heredará del elemento al que pertenece
+* `inset` Determina si la sombre será interior o exterior
+:::
+
+```html
+<div class='container'>I'M CONTAINER</div>
+```
+
+```css
+.container{
+  width: 300px;
+  color: white;
+  background-color: darkcyan;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 4px solid red;
+  text-align:center;
+  margin-top: 45px;
+  padding: 40px;
+  box-shadow: 5px 5px 12px darkcyan;
+}
+```
