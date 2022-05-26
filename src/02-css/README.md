@@ -78,7 +78,7 @@ Dentro del archivo `.html` creamos un sección con la etiqueta `<style></style>`
  ```
  # Sintaxis de css
  
- ![Sintax css](https://res.cloudinary.com/dqhme1rod/image/upload/v1653414229/myimages/pja4o0rzu9ryxk9vimzz.png)
+ [Sintax css](https://res.cloudinary.com/dqhme1rod/image/upload/v1653414229/myimages/pja4o0rzu9ryxk9vimzz.png)
 
  `Fuente: https://ed.team/`
 
@@ -332,7 +332,7 @@ Para evitar que un elemento herede propiedades, añadimos el valor initial a una
 ::: 
 
 ![Box model](https://res.cloudinary.com/dqhme1rod/image/upload/v1653326979/myimages/ktfbfs2isdazqpoyviin.png)
-fuente: `w3school`
+fuente: `[CSS Box Model](https://www.w3schools.com/Css/css_boxmodel.asp)`
 
 Los `elementos en linea` no tienen medida. El tamaño lo determina su contenido.
 
