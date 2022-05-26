@@ -495,3 +495,138 @@ helloUser = 'hello paparazzi';
 username = (helloUser as string).substring(6);
 console.log('username',username);  
 ``` 
+
+## Funciones en TypeScript
+
+
+:::tip 
+* Los parámetros en las funciones son tipados
+* Se pueden definir parámetros opcionales
+* El tipo de retorno puede ser un tipo básico, enum, alias, tipo literal o una combinación de ellos
+::: 
+
+```ts 
+type SquareSize = '100x100' | '500x500' | '1000x|1000';
+function createPicture(title:string,date:string,size: SquareSize){
+  // Se crea la Fotografía
+  console.log('create Picture using', title, date, size);   
+}
+
+createPicture('My Birthday','2020-03-10', '500x500');
+``` 
+`Nota`: Los parametros opcionales en TypeScript son un mecanismo para permitir el paso de diferentes valores, la notación es la siguiente `title?` (uso del simbolo de interrogación despues del nombre de la variable)
+
+```ts 
+function createPicture(title?:string,date?:string,size?: SquareSize){
+    // Se crea la Fotografía
+    console.log('create Picture using', title, date, size);   
+}
+  
+createPicture('My Birthday','2020-03-10', '500x500');
+createPicture('Colombia Trip','2020-03');
+createPicture('Colombia Trip');
+createPicture();
+
+// Fat Arrow Function
+let createPic = (title:string, date:string,size:SquareSize) : object => {
+  return {title,date,size};
+};
+
+const picture = createPic('Platzi session','2022-05-26','100x100');
+console.log('picture',picture);
+```
+
+## Interfaces
+
+Las interfaces en TypeScript constituyen una forma poderosa de definir `"contratos"` tanto para tu proyecto, como para el código externo del mismo.
+
+:::tip
+Una interfaz es como un molde para un objeto. Si el objeto no encaja en el molde, te va a dar error.
+::: 
+
+```ts
+enum PhotoOrientation {
+  Landscape,
+  Portrait,
+  Square,
+  Panorama   
+}
+
+interface Picture {
+  title: string;
+  date: string,
+  orientation: PhotoOrientation  
+}
+function showPicture(picture: Picture){
+  console.log(`[Title: ${picture.title}, date: ${picture.date}, orientation: ${picture.orientation}]`);
+}
+
+let myPic = {
+  title : 'Test Title',
+  date: '2020-03',
+  orientation: PhotoOrientation.Landscape  
+};
+
+showPicture(myPic);
+showPicture({
+  title: 'Test title',
+  date: '2020-03',
+  orientation: PhotoOrientation.Portrait,
+//   extra: 'test'  // Error
+});
+```
+
+## Interfaces - Propiedades Opcionales
+
+::: tip Nota
+* No todas las propiedades de una interfaz podrían ser requeridas 
+* Establecemos una propiedad como opcional con el símbolo `(?)` después del nombre
+::: 
+
+```ts
+interface PictureConfig {
+  title?: string;
+  date?: string;
+  orientation?: PhotoOrientation  
+}
+function generatePicture(config: PictureConfig){
+  const pic = {title: 'Default',date:'2020-03'};
+  if(config.title){
+    pic.title = config.title;
+  }
+  if(config.date){
+    pic.date = config.date;   
+  }
+
+  return pic;
+}
+
+let picture = generatePicture({});
+console.log('picture',picture);
+picture = generatePicture({title: 'Travel Pic'});
+console.log('picture',picture);
+```
+
+## Interfaces - Propiedades de solo lectura
+
+:::tip
+* Algunas propiedades de la interfaz podrían no ser modificables una vez creado el objeto
+* Esto es posible usando `readonly` antes del nombre de la propiedad 
+:::
+
+```ts
+// Interfaz: Usuario
+interface User {
+  // Propiedad id solo lectura
+  readonly id: number;
+  username: string;
+  isPro: boolean;
+}
+
+let user: User;
+user = {id : 10, username: 'luixaviles', isPro: true};
+console.log('user',user);
+user.username = 'paparazzi';
+// user.id = 20; Error 
+console.log('user',user);
+```

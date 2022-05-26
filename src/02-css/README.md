@@ -163,52 +163,53 @@ Uno de los principios de css es que los estilos sean reutilizables, por lo que s
 
 `[href]`
 
+```css
+[href]{
+  text-decoration: none;
+  background-color: darkcyan;
+}
+```
 `[href='https://google.com']` 
+
+```css
+[href='https://google.com']{
+  text-decoration: none;
+  background-color: darkcyan;
+}
+```
 
 `[atributo^=valor]`
 
-`[atributo*=valor]`
+```css
+/* Elemento <a> con un href que comience con 'https' */
+[href^='https']{
+  text-decoration: none;
+  background-color: darkcyan;
+}
+```
 
 `[atributo$=valor]`
 
-`[atributo|=valor]`
+```css
+/* Elemento <a> con un href que termine en '.com' */
+[href$='.com']{
+  text-decoration: none;
+  background-color: darkcyan;
+}
+```
+
+`[atributo*=valor]`
 
 ```css
- /*[href]*/
-[href]{
-  background-color: black;
+/* Elemento <a> con un href que contenga 'gle' */
+[href*='gle']{
+  text-decoration: none;
+  background-color: darkcyan;
 }
 ```
-```css
-/* [href='https://google.com'] */
-[href='https://google.com']{
-  background-color:yellow; 
-}
-``` 
-```css
-/* [atributo^=valor] */
-[href^='color']{
-  background-color:yellow; 
-}
-``` 
-```css
-/* [atributo*=valor] */
-[href*='modo']{
-  background-color:yellow; 
-}
-``` 
-```css
-/* [atributo$=valor] */
-[href$='rojo']{
-  background-color:yellow; 
-}
-```
-```css 
-/* [atributo|=valor] */
-[lang|='en']{
-  background-color:blue; 
-}
-``` 
+
+
+<!-- `[atributo|=valor]`  INVESTIGAR THIS-->
 
 ## Selectores agrupados 
 
@@ -293,11 +294,11 @@ Si tenemos un elemento con la clase `.text-2` y queremos aplicarle un estilo a t
 La `Especificidad` establece cómo de especifico es un selector para saber qué estilo aplicar. El cálculo se realiza con la siguiente `fórmula:` 
 
 ::: tip Fórmula
-Etiquetas y pseudoelementos  `001` <br> 
-Clases, atributos y pseudoclases `010` <br>
-Ids `100` <br>
-Estilos en línea `1000` <br>
-!important GANA A TODO Y NO SE USA NUNCA 
+* Etiquetas y pseudoelementos  `001`  
+* Clases, atributos y pseudoclases `010` 
+* Ids `100` 
+* Estilos en línea `1000` 
+* !important GANA A TODO Y NO SE USA NUNCA 
 ::: 
 
 ::: tip Nota
@@ -311,7 +312,7 @@ La herencia es la capacidad que tienen algunos elementos de heredar algunas prop
 Los enlaces no heredan de sus padres. Para forzar la herencia usamos el valor `inherit`
 ::: 
 
-Por ejemplo: Si tenemos un link dentro un párrafo y queremos que herede el color de este, usamos el valor `inherit` 
+Por ejemplo: Si tenemos un link dentro de un párrafo y queremos que herede el color de este, usamos el valor `inherit` 
 
 ```css
 .link {
@@ -319,16 +320,34 @@ Por ejemplo: Si tenemos un link dentro un párrafo y queremos que herede el colo
 }
 ```
 
-Para evitar que un elemento herede propiedades, añadimos el valor initial a una propiedad ejemplo `color:initial`  
+Para evitar que un elemento herede propiedades, añadimos el valor initial a una propiedad. **Ejemplo** 
+
+```html
+<ul class='list'>
+ <li clas='list-item'>Item 1</li>
+ <li clas='list-item'>Item 2</li>
+ <li clas='list-item-extra'>Item 3</li>
+</ul>  
+```
+```css
+/* Todos los li son de color rojo por herencia */
+.list{
+  color: red;
+}
+/* Evitamos que el li con las clase .list-item-extra herede el color del ul*/
+.list-item-extra {
+  color:initial
+}  
+```
 
 ## Box Model
 ::: tip Propiedades del box model 
-`Contenido` <br>
-`Borde` <br>
-`Padding`: Distancia entre el border de la caja y el contenido <br>
-`Margin`: Nos sirve para separar un caja de otra <br>
-`Width`: Ancho <br>
-`Height`: Alto <br>
+* `Contenido` 
+* `Padding`: Distancia entre el border de la caja y el contenido 
+* `Border` 
+* `Margin`: Nos sirve para separar un caja de otra 
+* `Width`: Ancho 
+* `Height`: Alto 
 ::: 
 
 ![Box model](https://res.cloudinary.com/dqhme1rod/image/upload/v1653326979/myimages/ktfbfs2isdazqpoyviin.png)
@@ -382,9 +401,9 @@ Admite hasta 4 valores que van el orden de las agujas del reloj
 }
 ```
 ::: tip Nota
-Los elementos de línea solo tienen margenes horizontales <br>
-Los elementos de bloque tienen disponibles los 4 margenes <br>
-Usando Margenes atomáticos podemos centrar elementos.
+* Los elementos de línea solo tienen margenes horizontales 
+* Los elementos de bloque tienen disponibles los 4 margenes 
+* Usando Margenes automáticos podemos centrar elementos.
 ::: 
 
 ```css
@@ -399,9 +418,7 @@ Usando Margenes atomáticos podemos centrar elementos.
 ```
 
 ## Padding
-La propiedad padding nos permite generar espacio entre el borde interno y la caja.
-
-Es un shorthand que controla los 4 lados posibles a los que dar padding.
+La propiedad padding nos permite generar espacio entre el borde interno y la caja. Es un `shorthand` que controla los 4 lados posibles a los que dar padding.
 
 :::tip padding 
 `padding-top`: padding superior <br>
@@ -435,8 +452,8 @@ ejemplo
 ```
 
 :::tip  Nota
-Si nuestro objetivo es separar la caja de los elementos que la rodean debemos usar `margin`. <br>
-Si queremos aumentar el tamaño de la caja y separar los bordes del contenido debemos usar `padding`
+* Si nuestro objetivo es separar la caja de los elementos que la rodean debemos usar `margin`
+* Si queremos aumentar el tamaño de la caja y separar los bordes del contenido debemos usar `padding`
 ::: 
 
 ## Border
@@ -482,7 +499,7 @@ Ejemplo
 ```
 
 ## box-sizing
-Es la propiedad que nos permite controlar el cálculo que hace el navegador a la hora de modificar las propiedades content, padding y border
+Es la propiedad que nos permite controlar el cálculo que hace el navegador a la hora de modificar las propiedades `content`, `padding` y `border`
 
 Los dos valores que le podemos dar son: 
 :::tip 
