@@ -21,7 +21,12 @@ module.exports = {
         link: '/',
       },
     ],
-    sidebar:[/* "/", */"/01-git/",'/02-css/','/03-typescript/','/04-vanillajs/']
+    sidebar:[
+      "/01-git/",
+      '/02-css/',
+      '/03-typescript/',
+      '/04-vanillajs/'
+    ]
   },
   plugins: [
     '@vuepress/plugin-back-to-top',

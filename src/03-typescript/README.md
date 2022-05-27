@@ -1,5 +1,9 @@
 # TypeScript
 
+:::danger
+Tengo que estudiar clases en JavaScript
+:::
+
 ## Qué es TypeScript ? 
 
 TypeScript es un superconjunto tipado de JavaScript, que compila a JavaScript
@@ -18,7 +22,8 @@ Lenguaje de programación tipado
 * Compila a ES5, ES6 y más
 
 ## Instalar cualquier versión de nodejs
-Existe un paquete de npm que nos permite instalar cualquier versión de nodejs disponible de manera facil y/o cambiar de version. Se llama `n`, esta disponible en el siguiente enlace [Paquete n](https://www.npmjs.com/package/n) 
+Existe un paquete de npm que nos permite instalar cualquier versión de nodejs disponible de manera facil y/o cambiar de version. Se llama `n`, esta disponible en el siguiente enlace [Interactively Manage Your Node.js Versions](https://www.npmjs.com/package/n) 
+
 
 ## Compilador de TypeScript
 `tsc`: TypeScript Compiler
@@ -63,19 +68,19 @@ tsc --init
 ## Creando un proyecto en ts
 
 :::tip
-**1.** Lo primero que debemos hacer es crear una carpeta con el nombre de nuestro proyecto <br>
-**2.** Dentro de la misma creamos una carpeta src <br>
-**3.** Dentro de `src` creamos el index.ts <br>
-**4.** Generamos el archivo `tscconfig.json`
-**5.** Configuramos la salida de nuestros archivos, dentro de `tscconfig.json` definimos el directorio local `outDir: "./dist"` <br>
-**6** Ejecutamos el archivo compilado con el siguiente comando `node dist/index.js`
+* Lo primero que debemos hacer es crear una carpeta con el nombre de nuestro proyecto 
+* Dentro de la misma creamos una carpeta src 
+* Dentro de `src` creamos el index.ts 
+* Generamos el archivo `tscconfig.json`
+* Configuramos la salida de nuestros archivos, dentro de `tscconfig.json` definimos el directorio local `outDir: "./dist"` 
+* Ejecutamos el archivo compilado con el siguiente comando `node dist/index.js`
 :::
 
 Al ejecutar el comando `tsc` se crea una carpeta llamada `dist` con nuestros archivos compilados en `js`
 
 ## Tipado en TypeScript
 
-* `Explícito` 
+`Explícito` 
 Define una sintaxis para la creación de variables con tipo de dato. <br>
 :::tip Explícito 
 `nameVariable` : `TypeDate`
@@ -84,7 +89,7 @@ Define una sintaxis para la creación de variables con tipo de dato. <br>
 message : string; 
 ```
 ::: 
-* `Inferido`
+`Inferido`
 TypeScript tiene la habilidad de deducir el tipo en función de un valor.
 
 :::tip Inferido
@@ -630,3 +635,135 @@ user.username = 'paparazzi';
 // user.id = 20; Error 
 console.log('user',user);
 ```
+
+## Extendiendo Interfaces
+
+:::tip
+* Las interfaces pueden extenderse unas de otras. Esto permite copiar los miembreos ya definidos en una interfaz a otra, ganando flexibilidad y reusabilidad de componentes
+:::
+
+```ts
+enum PhotoOrientation {
+   Landscape,
+   Portrait,
+   Square,
+   Panorama  
+}
+
+interface Entity {
+    id: number;
+    title:string; 
+}
+interface Album extends Entity {
+    // copia de los atributos de Entity
+    description: string; 
+}
+
+interface Picture extends Entity {
+   orientation: PhotoOrientation;
+}
+
+const album: Album = {
+  id: 1,
+  title: 'Meetups',
+  description: 'Community events around the world'  
+};
+
+const picture: Picture = {
+   id: 1,
+   title: 'Family',
+   orientation: PhotoOrientation.Landscape
+};
+
+let newPicture = {} as Picture;
+newPicture.id = 2;
+newPicture.title = 'Moon'; 
+
+console.log('album', album);
+console.log('picture', picture);
+console.log('newPicture', newPicture);
+```
+
+## Definiendo clases y constructores 
+
+:::tip 
+* A partir de `ECMAScript 2015` es posible construir clases y hacer uso del paradigma de la Programación Orientada a Objectos en JavaScript
+* TypeScript permite aplicar estas técnicas sin tener que esperar por otra versión.  
+:::
+
+```ts
+enum PhotoOrientation {
+    Landscape,
+    Portrait,
+    Square,
+    Panorama  
+}
+
+class Picture {
+   // Propiedades 
+   id: number;
+   title: string;
+   orientation: PhotoOrientation;
+
+   constructor(id: number, title: string, orientation: PhotoOrientation){
+      this.id = id;
+      this.title = title;
+      this.orientation = orientation; 
+   }
+
+   // Comportamiento
+   toString(){
+     return `[id: ${this.id}],title:${this.title},orientation: ${this.orientation}]`;  
+   }
+}
+
+class Album {
+   id: number;
+   title: string;
+   pictures: Picture[];
+   
+   constructor(id: number, title:string){
+     this.id = id;
+     this.title = title;  
+     this.pictures = []; 
+   }
+   addPicture(picture: Picture){
+     this.pictures.push(picture); 
+   }
+}
+
+const album: Album = new Album(1,'Personal Pictures');
+const picture: Picture = new Picture(1,'Platzi session', PhotoOrientation.Square);
+album.addPicture(picture);
+
+console.log('album',album);
+```
+
+## Clases - Miembros Públicos
+
+:::tip
+* TypeScript define un modificador de acceso público por defecto para los miembros de clase.
+* También es posible marcar un miembro como público usando la palabra reservada `public`
+::: 
+
+```ts
+// Accediendo a los miembros publicos
+picture.id = 100; // public
+picture.title = 'Another title'; // public
+album.title = ' Personal Activities';
+console.log('album', album);
+```
+
+## Clases - Miembros Privados
+
+:::tip
+* TypeScript define una manera propia de declarar o marcar un miembro como privado usando la palabra reservada `private`
+::: 
+
+## Miembros Privados ECMAScript
+
+:::tip 
+* TypeScript también soporta(a partir de la versión 3.8) la nueva sintaxis JavaScript para miembros privados: `#atributo`
+* Esta característica puede ofrecer mejores garantías de aislamiento en miembros privados. 
+:::
+
