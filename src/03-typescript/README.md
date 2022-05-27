@@ -1,6 +1,6 @@
 # TypeScript
 
-:::danger
+:::warning
 Tengo que estudiar clases en JavaScript
 :::
 
@@ -766,4 +766,125 @@ console.log('album', album);
 * TypeScript también soporta(a partir de la versión 3.8) la nueva sintaxis JavaScript para miembros privados: `#atributo`
 * Esta característica puede ofrecer mejores garantías de aislamiento en miembros privados. 
 :::
+
+## Clases - Métodos Set y Get
+
+:::tip 
+* TypeScript soporta los métodos accesores `set` y `get` como una forma de interceptar los accesos a los miembros privados de un objeto
+:::
+
+:::tip
+Los modificadores de acceso en TypeScript son muy importantes para controlar de que forma podemos acceder y cambiar el estado sobre nuestros miembros
+:::
+
+## Herencia de Clases y Miembros protegidos
+
+:::tip
+TypeScript soporta este patrón común en el mundo de la POO.
+Implementa la habilidad de extender código de clases existentes a través de la `herencia`
+:::
+
+```ts
+enum PhotoOrientation {
+    Landscape,
+    Portrait,
+    Square,
+    Panorama  
+}
+
+// SUPERclase
+class Item{
+   protected _id: number;
+   protected _title: string;
+   
+   constructor(id: number, title: string){
+      this._id = id;
+      this._title = title;
+   }
+
+    get id(){
+     return this._id;  
+    }
+    set id(id: number ){
+     this._id = id;
+    }
+
+    get title(){
+     return this._title;  
+    }
+    set title(title:string){
+     this._title = title;  
+    }
+}
+// get y set
+
+class Picture extends Item {
+   // Propiedades 
+   private _orientation: PhotoOrientation;
+
+   public constructor(id: number, title: string, orientation: PhotoOrientation){
+    super(id,title);
+    this._orientation = orientation; 
+   }
+   get orientation(){
+     return this._orientation  
+   }
+   set orientation(o: PhotoOrientation){
+     this._orientation = 0
+   }
+   // Comportamiento
+   public toString(){
+     return `[id: ${this.id}],title:${this.title},orientation: ${this.orientation}]`;  
+   }
+}
+
+class Album extends Item {
+   private pictures: Picture[];
+   
+   public constructor(id: number, title:string){
+     super(id,title); // constructor de SUPER clase  
+     this._id = id;
+     this._title = title;  
+     this.pictures = []; 
+   }
+   public addPicture(picture: Picture){
+     this.pictures.push(picture); 
+   }
+}
+
+const album: Album = new Album(1,'Personal Pictures');
+const picture: Picture = new Picture(1,'Platzi session', PhotoOrientation.Square);
+album.addPicture(picture);
+
+console.log('album',album);
+
+
+
+// Accediendo a los miembros publicos
+console.log('picture.id',picture.id); // get id()
+
+picture.id = 100; // private se id(100)
+picture.title = 'Another title'; // private
+album.title = ' Personal Activities'; // private
+console.log('album', album);
+```
+
+:::tip Nota
+* Las clases Abstractas son la base de donde otras clases podrían derivarse. A diferencia de una Interfaz, una clase abstracta puede implementar funciones para sus instancias. La palabra reservada es: `abstract`
+::: 
+
+## Clases Abstractas
+
+:::tip Nota
+* Las clases Abstractas son la base de donde otras clases podrían derivarse. A diferencia de una Interfaz, una clase abstracta puede implementar funciones para sus instancias. La palabra reservada es: `abstract`
+::: 
+
+## Propiedades estáticas y Propiedades de solo lectura
+
+:::tip Nota
+* Las clases por lo general definen atributos y métodos aplicables a las instancias de las mismas.
+* A través de la palabra reservada `static` se puede definir un miembro visible a nivel de clase.
+* Al igual que las interfaces, podemos usar la palabra reservda `readonly` para marcar el miembro de una clase como solo lectura. 
+::: 
+
 
