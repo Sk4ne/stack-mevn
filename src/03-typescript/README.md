@@ -887,4 +887,69 @@ console.log('album', album);
 * Al igual que las interfaces, podemos usar la palabra reservda `readonly` para marcar el miembro de una clase como solo lectura. 
 ::: 
 
+## Módulos en TypeScript
 
+:::tip Nota
+* Los módulos en TypeScript proveen un mecanismo para una mejor organización del código y promueven su reutilización
+* A partir de ECMAScript 2015, los módulos son parte nativa del lenguaje JavaScript 
+::: 
+
+## Importantando y exportando en módulos
+
+* Generalmene se define un módulo con la idea de agrupar código relacionado
+* Podemos tomar criterios en torno a la funcionalidad, features, utilitarios, modelos, etc.
+* Los miembros de módulo interactúan con el uso de las palabras reservadas `import` y `export`
+
+## Principio de responsabilidad Única
+
+:::tip Nota
+* Idealmente, un archivo debería tener un propósito o responsabilidad única: definir una clase, una interfaz, un enumerado, etc. 
+* Esto mejora la legibilidad de código, facilita su lectura, testing y favorece su mantenimiento.
+:::
+
+## tsc - Forma II
+:::tip
+* Hasta el momento hemos compilado los archivos usando `tsc --watch`
+* Existe otra forma y es la siguiente: `tsc --project photo-app --watch`, donde photo-app es el nombre de la carpeta de nuestro proyecto.
+:::
+
+## Resolviendo Módulos
+:::tip Nota
+* TypeScript resuelve la ubicación de módulos observando referencias relativas y no relativas
+* Posteriormente intenta localizar el módulo usando una `estrategia de resolución de módulos`
+:::
+
+## Instalación de TypeScript y Webpack
+
+```ts
+// Generar el package.json
+npm init -y
+```
+
+```ts
+// Instalar typescript y webpack
+npm install typescript webpack webpack-cli --save-dev
+```
+```ts
+// file webpack.config.js
+module.exports = {
+   mode: 'production',
+   entry:'./src/main.ts',
+   devtool: 'inline-source-map',
+   module:{
+     rules:[
+       {
+         test:/\.ts$/,
+         use: 'ts-loader',
+         exclude: /node_modules/
+       },
+     ]
+   },
+   resolve: {
+     extensions: ['.ts','.js'],  
+   },
+   output: {
+     filename: 'bundle.js'  
+   } 
+}
+```
