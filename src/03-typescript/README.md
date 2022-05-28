@@ -1,9 +1,5 @@
 # TypeScript
 
-:::warning
-Estudiar las clases - Vanilla JS
-:::
-
 ## Qué es TypeScript ? 
 
 TypeScript es un superconjunto tipado de JavaScript, que compila a JavaScript
