@@ -1,7 +1,7 @@
 # TypeScript
 
 :::warning
-Tengo que estudiar clases en JavaScript
+Estudiar las clases - Vanilla JS
 :::
 
 ## Qué es TypeScript ? 
@@ -9,9 +9,9 @@ Tengo que estudiar clases en JavaScript
 TypeScript es un superconjunto tipado de JavaScript, que compila a JavaScript
 
 :::tip
-Con TypeScript puedes prevenir cerca del 15% de bugs <br>
-Puedes correr TypeScript tanto en el server como en el cliente. <br>
-Lenguaje de programación tipado
+* Con TypeScript puedes prevenir cerca del 15% de bugs 
+* Puedes correr TypeScript tanto en el server como en el cliente. 
+* Lenguaje de programación tipado
 :::
 
 ## Por qué usar TypeScript ?
