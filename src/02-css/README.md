@@ -768,3 +768,8 @@ Los posibles valores que le podemos dar a position son:
 * `Relative` : El elemento mantendrá su posición y medias en el flujo de renderizado y mantendrá su espacio reservado. Si lo movemos lo hará usando su posición en el html com punto de referencia.
 * `Absolute` : El elemento perdera sus medidas y su espacio reservado. Si lo movemos usará el elemento padre posicionado como referencia. Si no tiene ninguno, usará el elemento html de referencia.
 * `fixed` : El elemento perderá su medidas y su espacio reservado. Si lo movemos usará el elemento html de referencia, y además se quedará fijo en esa posición aunque hagamos scroll.
+
+## Position absolute
+
+* Un elemento con `position absolute` y no esta dentro de ningun contenedor posicionado su movimiento va a ser respecto a todo el html
+* Cuando le damos `position: absolute` a un elemento, generamos un contexto de bloque para poder darle medidas.
