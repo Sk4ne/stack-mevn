@@ -465,7 +465,7 @@ let mediumPicture : SquareSize = '500x500'
 ## Aserciones de Tipo
 
 :::tip Aserciones de Tipo
-* Cuando el programador puede concer más que TypeScript sobre el valor de una variable 
+* Cuando el programador puede conocer más que TypeScript sobre el valor de una variable 
 * Es un mensaje al compilador: "Confía en mí, sé lo que hago" 
 * Usa dos sintaxis: `<Angle Bracket>` y `Variable as tipo`
 ::: 

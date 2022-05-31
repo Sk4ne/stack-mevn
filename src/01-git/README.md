@@ -2,13 +2,10 @@
 
 :::tip Nota 
   Todo desarrollador de software profesional debe conocer al menos un sistema de control de versiones, para llevar el control total de sus proyectos si en el temor 
-  de perder información importante.
+  de perder información importante. <br>
+  Gran parte de estas notas las he tomando de uno de los mejores cursos de `git y github` que visto en linea de `Fernando Herrera`
+  [GIT+GitHub: Todo un sistema de control de versiones de cero](https://www.udemy.com/course/git-github/)
 ::: 
-
-::: warning
-Gran parte de estas notas las tome de un curso en línea de `Fernando Herrera`
-[Curso de git y github](https://www.udemy.com/course/git-github/)
-:::
 
 ## Instalar Git
 El primer paso para trabajar con Git es instalarlo, esta es su página oficial
@@ -170,12 +167,12 @@ git commit --amend -m "Actualizamos el readme"
 
 Si queremos revertir los commits usamos 
 ```
-git reset -soft HEAD^ 
+git reset --soft HEAD^ 
 ```
 
 ## Viajes en el tiempo
 
-Para volver a un punto en especifico usamos [VOLVER A REVISAR ESTE COMANDO...]
+Para volver a un punto en especifico usamos
 
 ```js
 // 88421ca es el id o hash del commit
@@ -282,7 +279,7 @@ git branch -d test
 ## Crear una rama y movernos automaticamente a ella
 
 ```
-git branch -b nameBranch 
+git checkout -b branchName
 ``` 
 
 ## Tag o etiquetas
@@ -296,7 +293,7 @@ Los `tags` son una referencia a un commit específico
 ## Crear un tag
 
 ```
-Git tag name-tag
+git tag name-tag
 ```
 
 ## Ver todos los tags
@@ -322,7 +319,7 @@ git tag -d name-tag
 Si tenemos nuestro repositorio local almacenado en sitios como GitLab o GitHub, el comando para subir nuestros tag a la nube es el siguiente
 
 ```js
-git pus --tags 
+git push --tags 
 // ó
 git push origin --tags 
 ```

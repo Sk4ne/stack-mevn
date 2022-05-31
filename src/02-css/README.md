@@ -230,7 +230,7 @@ Si tenemos tres etiquetas `h1` con las clases `.text`,`.text2`,`.text3` para apl
 ## Selectores descendientes 
 
 ::: warning
-Nota: Las buenas practicas recomiendan que no debemos descender más de dos nivels
+Las buenas practicas recomiendan que no debemos descender más de dos nivels
 :::
 
 En este caso le vamos a aplicar un estilo al primer elemento html que tenga las clase `.title-2` y que se encuentre dentro de un div. 
@@ -733,3 +733,38 @@ Los valores que le podemos poner son:
   box-shadow: 5px 5px 12px darkcyan;
 }
 ```
+
+## Position
+
+La propiedad position nos permite posicionar los elementos. Hay algunos conceptos que debemos conocer para entender position.
+
+`Flujo de renderizado`: Por norma general los elementos se dibujan de izquierda a derecha y de arriba a abajo. El punto 0,0 de los elementos, por norma general, es esquina superior izquierda.
+
+`Espacio reservado` : Es el espacio que tiene un elemento asignado en el navegador
+
+`Elemento posicionado `: Esto significa que el elemento tiene la propiedad position con valor distinto de `"static"`, que es el valor que tiene esta propiedad por defecto.
+
+`stakin context` : Contexto de apilamiento. Es el orden en el que se apilarán las cajas que se superponen. 
+
+Al posicionar un elemento se habilitan 5 propiedades que podemos utilizar para mover los elementos en los 3 ejes.
+
+* `top`: El elemento se moverá desde la parte superior a la distancia que hayamos indicado. 
+
+* `right`: El elemento se moverá desde la parte derecha la distancia que le hayamos indicado
+
+* `bottom`: El elemento se moverá desde la parte inferior la distancia que le hayamos indicado.
+
+* `left`: El elemento se moverá desde la parte izquierda la distancia que le hayamos indicado
+
+* `z-index`: Nos permite mover el elemento en el contexto de apilamiento (eje z)
+
+:::tip Nota
+Si a un elemento le declaramos la propiedad top y/o left, las propiedades bottom y/o right no funcionarán.
+::: 
+
+Los posibles valores que le podemos dar a position son:
+
+* `static` : Es el valor que tiene por defecto un elemento, con este valro el elemento NO ESTA POSICIONADO y por lo cual no podremos moverlo.
+* `Relative` : El elemento mantendrá su posición y medias en el flujo de renderizado y mantendrá su espacio reservado. Si lo movemos lo hará usando su posición en el html com punto de referencia.
+* `Absolute` : El elemento perdera sus medidas y su espacio reservado. Si lo movemos usará el elemento padre posicionado como referencia. Si no tiene ninguno, usará el elemento html de referencia.
+* `fixed` : El elemento perderá su medidas y su espacio reservado. Si lo movemos usará el elemento html de referencia, y además se quedará fijo en esa posición aunque hagamos scroll.
