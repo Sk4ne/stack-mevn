@@ -21,11 +21,44 @@ module.exports = {
         link: '/',
       },
     ],
-    sidebar:[
+   /* ORIGINAL CONFIG */
+   /*  sidebar:[
       "/01-git/",
       '/02-css/',
       '/03-typescript/',
-      '/04-vanillajs/'
+      '/04-vanillajs/',
+      '/05-mongodb/'
+    ], */
+    /* CONFIG II  */
+    sidebar:[
+      {
+        title:'Git',
+        path:'/01-git/',
+      },
+      {
+        title:'MongoDB',
+        path:'/05-mongodb/',
+        collapsable:true,
+        children:[
+          '/05-mongodb/basic-command.md',
+          '/05-mongodb/cursor.md',
+          '/05-mongodb/queries.md',
+          '/05-mongodb/oper-comparacion.md',
+          '/05-mongodb/oper-consulta-logica.md',
+          '/05-mongodb/oper-consulta-elemen.md',
+          '/05-mongodb/oper-consult-evalu.md',
+          '/05-mongodb/update-documents.md',
+          '/05-mongodb/deleting.md',
+        ]
+      },
+      {
+        title:'TypeScript',
+        path:'/03-typescript/',
+      },
+      {
+        title:'Css',
+        path:'/02-css/',
+      },
     ]
   },
   plugins: [
