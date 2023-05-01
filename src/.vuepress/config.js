@@ -59,23 +59,24 @@ module.exports = {
         title:'Css',
         path:'/02-css/',
       },
+      /* nuevo 1 mayo 2023 */
+      {
+        title: 'POO',
+        path:'/04-poo/'
+      }
     ]
   },
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    '@vuepress/last-updated'
-    // [
-    //   '@vuepress/last-updated',
-    //   {
-    //     transformer: (timestamp, lang) => {
-    //       // Don't forget to install moment yourself
-    //       const moment = require('moment')
-    //       moment.locale(lang)
-    //       return moment(timestamp).fromNow()
-    //   }
-    // }
-    // ]
+    // '@vuepress/last-updated'
+    '@vuepress/last-updated',/* {
+      transformer: (timestamp, lang) => {
+        const moment = require('moment')
+        moment.locale(lang)
+        return moment(timestamp).format('LLL')
+      }
+    } */
   ]
   // plugins: [
   //   '@vuepress/plugin-back-to-top',

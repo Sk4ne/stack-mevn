@@ -467,3 +467,43 @@ git fetch
 git status
 git pull 
 ```
+
+## Eliminar un commit local y remoto
+
+```js
+git reset --hard HEAD~1
+```
+Este comando elimina el ultimo commit y deshara cualquier cambio que se haya realizado en el
+
+### Forzar la actualizacion en el repisitorio remoto
+
+```js
+git push --force origin <nombre-rama>
+
+```
+## Subir cambios a un commit especifico
+Para subir cambios a un commit especifico, primero hay que asegurarse de estes en la rama correcta donde se encuetra el commit. A continuacion agrega los cambios al area de preparacion con el comando 
+
+
+```js 
+git add . 
+```
+
+Luego realiza el commit con los cambios preparados, utilizando el mensaje del commit anterior con el comando
+
+```js
+git commit --amend --no-edit 
+```
+El argumendo `--amend` indica a git que debe agregar los cambios nuevos al commit anterior en lugar de crear un nuevo commit. El argumento `--no-edit` se usa para evitar abrir el editor de texto para modificar el mensaje del commit anterior.
+Por ultimo ejecutamos
+```js
+git push --force origin <nombre-rama>
+```
+El argumento `--force` sobreescribira la historia de git en la rama remota
+
+## Desahacer un git reset --hard HEAD~1
+
+```js
+git reflog
+git reset --hard <hash>
+```
