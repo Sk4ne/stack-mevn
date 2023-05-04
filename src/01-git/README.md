@@ -265,7 +265,7 @@ git diff test master
 Para unir dos ramas lo primero que debemos hacer es movernos a la rama principal, la cual queremos fusionar con otra. Luego hacemos la unión.
 
 ```
-git branch master
+git checkout master
 git merge test
 ```
 ::: tip Nota 
